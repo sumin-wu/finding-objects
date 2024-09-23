@@ -190,7 +190,7 @@ private:
     std::vector<Component> components_;
 
     //===========================================================
-    // Add any other data member(s)
+
     //std::vector<int> order;
     //original is 0, 1, 2
     //push 0 to the front 
