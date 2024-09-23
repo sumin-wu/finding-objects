@@ -7,7 +7,7 @@
  * @brief Models a row/column location and provides an
  *        initializing constructor and comparison ability
  *
- *  COMPLETE - DO NOT ALTER
+ *  
  */
 struct Location {
     int row;
