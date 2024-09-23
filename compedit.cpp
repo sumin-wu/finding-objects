@@ -15,28 +15,18 @@ int main(int argc, char *argv[])
         cout << "Usage ./compedit in_img_filename <option option-args>" << endl;
         return 1;
     }
-
-    // ===================
-    // TO DO: Fill in the argument to the constructor below
-    // ===================
-    // TO DO: call findComponents
     CImage img1(argv[1]);//read image!
     img1.findComponents();
 
-    // ===================
-    // Complete - Do not alter
-    //   Option handling
     int option = 0;
     if(argc >= 3) {
         option = atoi(argv[2]);
     }
     if(option == 1) {
-        // Complete - Do not alter
         img1.printComponents();
         return 0;
     }
     else if(option == 2 || option == 3) {
-        // Complete - Do not alter
         if(argc < 4) {
             cout << "Please provide an extra argument of the filename to save the image." << endl;
         }
@@ -59,7 +49,7 @@ int main(int argc, char *argv[])
         string cmd_error = "Bad command filename";
 
         // ===================
-        // TODO: Create appropriate input stream. Print the string cmd_error and return 0
+        // input stream. Print the string cmd_error and return 0
         // if the file can't be opened
         ifstream ifile(argv[3]);//continue
 
@@ -68,18 +58,15 @@ int main(int argc, char *argv[])
             return 0;
         }
         // ===================
-        //  Pass the input stream you created
-        doInputLoop(ifile, img1);  //bug is this right
+        //  Pass the input stream created
+        doInputLoop(ifile, img1); 
         // ===================
-        //  TODO: Close the file
+        // Close the file
         ifile.close();
 		}
     else {
         doInputLoop(cin, img1);
     }
-
-    // ===================
-    // If necessary, add any cleanup code
 
     
     return 0;
@@ -88,7 +75,7 @@ int main(int argc, char *argv[])
 void doInputLoop(std::istream& istr, CImage& img)
 {
     // ===================
-    // TODO: Complete the implementation to process user commands
+    // process user commands
     //  of t - translate, f - forward, b - backward, s - save, and
     //  any other input letter to quit.
     string option_error = "Bad option";
@@ -97,25 +84,22 @@ void doInputLoop(std::istream& istr, CImage& img)
     bool again = true;
     do {
         img.printComponents();
-        // cout <<"after printComponents()" <<endl;
         cout << "\nEnter a command [t,f,b,s,q]: " << endl;
         istr >> option;
-        // cout << "option: "<<option <<endl;
         if(option == 't') {
             int nr, nc;
             // ==================
-            // TODO: Read cid, nr, and nc from the input stream,
+            // Read cid, nr, and nc from the input stream,
             //       printing "Bad option" and breaking from the 
             //       loop if any of the input is not read successfully
             istr>>cid>>nr>>nc;
            
             img.translate(cid, nr, nc);
-            // cout <<"finished translate" <<endl;
         }
         else if(option == 'f' || option == 'b') {
             int delta;
             // ==================
-            // TODO: Read cid and delta from the input stream
+            // Read cid and delta from the input stream
             //       printing "Bad option" and breaking from the 
             //       loop if any of the input is not read successfully
             istr>>cid>>delta;
@@ -131,7 +115,7 @@ void doInputLoop(std::istream& istr, CImage& img)
             
             istr>>filename;
             // ==================
-            // TODO: Read filename from the input stream,
+            //  Read filename from the input stream,
             //       printing "Bad option" and breaking from the 
             //       loop if any of the input is not read successfully
             
